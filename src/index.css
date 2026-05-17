@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@theme {
+  --font-playfair: 'Playfair Display', serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-poppins: 'Poppins', sans-serif;
+
+  --color-champagne: #f7e7ce;
+  --color-champagne-light: #fdf6ec;
+  --color-rose-gold: #b76e79;
+  --color-rose-gold-light: #d4a0a8;
+  --color-blush: #f9e8e8;
+  --color-ivory: #fffff0;
+  --color-warm-white: #fefaf6;
+  --color-dark: #1a1410;
+  --color-dark-soft: #2d2420;
+  --color-gold: #c9a96e;
+  --color-gold-light: #e8d5b0;
+  --color-gold-dark: #a07840;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fefaf6;
+  color: #1a1410;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdf6ec;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c9a96e;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a07840;
+}
+
+.font-playfair { font-family: 'Playfair Display', serif; }
+.font-cormorant { font-family: 'Cormorant Garamond', serif; }
+.font-poppins { font-family: 'Poppins', sans-serif; }
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #c9a96e 0%, #e8d5b0 50%, #a07840 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-rose {
+  background: linear-gradient(135deg, #b76e79 0%, #d4a0a8 50%, #8b4a55 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.glass-dark {
+  background: rgba(26, 20, 16, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+}
+
+.section-padding {
+  padding: 4rem 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .section-padding {
+    padding: 5rem 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 7rem 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-padding {
+    padding: 8rem 5rem;
+  }
+}
+
+/* Non-standard opacity utilities needed for dark section cards */
+.bg-white-3  { background-color: rgba(255,255,255,0.03); }
+.bg-white-5  { background-color: rgba(255,255,255,0.05); }
+.bg-white-8  { background-color: rgba(255,255,255,0.08); }
+.border-white-5  { border-color: rgba(255,255,255,0.05); }
+.border-white-8  { border-color: rgba(255,255,255,0.08); }
+
+/* Ornament divider */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.ornament::before,
+.ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #c9a96e55, transparent);
+}
+
+/* Petal particle animation */
+@keyframes petalFall {
+  0%   { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+.petal {
+  position: fixed;
+  top: -60px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50% 0 50% 0;
+  background: #d4a0a8;
+  opacity: 0;
+  pointer-events: none;
+  animation: petalFall linear infinite;
+  z-index: 1;
+}
+
+/* Duration transitions */
+.duration-400 { transition-duration: 400ms; }
+
+/* Image hover scale */
+.hover\:scale-102:hover { transform: scale(1.02); }
+
+/* Smooth page transition */
+.page-enter {
+  animation: pageEnter 0.6s ease forwards;
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
